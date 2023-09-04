@@ -14,11 +14,18 @@
                 <nav class="navbar navbar-dark">
                     <ul class="nav">
                         <li class="nav-item ml-3">
-                            <a th:href="@{/}" style="text-decoration: none; color: black"><i class="fa fa-home">Home</i></a>
+                            <a th:href="@{/}" style="text-decoration: none; color: black"><i class="fa fa-home">Todos</i></a>
+                        </li>
+                        <li class="nav-item ml-3">
+                            <a th:href="@{/projects}" style="text-decoration: none; color: black"><i class="fa fa-briefcase" aria-hidden="true">Projects</i></a>
                         </li>
                         <li class="nav-item ml-3">
                             <a th:href="@{/todos/add}" style="text-decoration: none; color: black"><i class="fa fa-plus" aria-hidden="true">Add Todo</i></a>
                         </li>
+                        <li class="nav-item ml-3">
+                            <a th:href="@{/projects/add}" style="text-decoration: none; color: black"><i class="fa fa-plus" aria-hidden="true">Add Project</i></a>
+                        </li>
+
                     </ul>
                 </nav>
             </div>
