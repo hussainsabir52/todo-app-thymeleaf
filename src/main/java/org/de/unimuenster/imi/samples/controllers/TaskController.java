@@ -27,8 +27,6 @@ public class TaskController {
     }
 
 
-    //TODO: Task 2
-
     @RequestMapping(path = "/todos/add", method = RequestMethod.GET)
     public  String addTodo(Model model){
         Task t1 = new Task();
