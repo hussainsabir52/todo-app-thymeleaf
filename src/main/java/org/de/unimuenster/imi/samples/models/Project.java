@@ -11,7 +11,10 @@ import java.sql.Timestamp;
 @Entity
 public class Project
 {
-
+    public Project(){}
+    public Project(Integer id){
+        this.id=id;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

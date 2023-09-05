@@ -1,6 +1,8 @@
 package org.de.unimuenster.imi.samples.models;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.Length;
 
@@ -23,6 +25,11 @@ public class Task {
     private String description;
 
     private String status = "pending";
+
+    @JoinColumn(name = "project")
+    @ManyToOne(targetEntity = Project.class, fetch = FetchType.EAGER)
+    private Project project;
+
 
     @CreationTimestamp
     @Column(nullable = false)
@@ -96,6 +103,14 @@ public class Task {
 
     public void setCompletedAt(Timestamp completedAt) {
         this.completedAt = completedAt;
+    }
+
+    public void setProject(Project p){
+        this.project=p;
+    }
+
+    public Project getProject(){
+        return this.project;
     }
 
     @Override
