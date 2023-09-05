@@ -1,6 +1,9 @@
 package org.de.unimuenster.imi.samples.controllers;
 
+import org.de.unimuenster.imi.samples.models.Project;
 import org.de.unimuenster.imi.samples.models.Task;
+import org.de.unimuenster.imi.samples.repositories.ProjectRepository;
+import org.de.unimuenster.imi.samples.services.ProjectService;
 import org.de.unimuenster.imi.samples.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,9 +16,11 @@ import java.util.List;
 public class TaskController {
 
     private TaskService taskService;
+    @Autowired
+    private ProjectRepository projectRepository;
 
     @Autowired
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskService taskService   ) {
         this.taskService = taskService;
     }
 
@@ -30,6 +35,8 @@ public class TaskController {
     @RequestMapping(path = "/todos/add", method = RequestMethod.GET)
     public  String addTodo(Model model){
         Task t1 = new Task();
+        List<Project> projects= projectRepository.findAll();
+        model.addAttribute("projects", projects);
         model.addAttribute("newTodo", t1);
         return "add";
     }

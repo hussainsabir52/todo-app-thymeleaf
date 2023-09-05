@@ -1,6 +1,8 @@
 package org.de.unimuenster.imi.samples.services;
 
+import org.de.unimuenster.imi.samples.models.Project;
 import org.de.unimuenster.imi.samples.models.Task;
+import org.de.unimuenster.imi.samples.repositories.ProjectRepository;
 import org.de.unimuenster.imi.samples.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,7 @@ public class TaskServiceImpl implements TaskService {
         try{
             todo.setTitle(task.getTitle());
             todo.setDescription(task.getDescription());
-
+            todo.setProject(task.getProject());
             Date time = new Date();
             long newTime = time.getTime();
             Timestamp completedTime = new Timestamp(newTime);
@@ -59,6 +61,7 @@ public class TaskServiceImpl implements TaskService {
         List<Task> t = null;
         try {
             t = taskRepository.findAll();
+            System.out.println(t);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
